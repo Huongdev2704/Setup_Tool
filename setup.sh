@@ -16,13 +16,16 @@ cd proot-distro
 # Cài Ubuntu
 proot-distro install ubuntu
 
-# Login vào Ubuntu và thực hiện các lệnh bên trong
+# Login vào Ubuntu và cài Python 3.11.0 từ nguồn
 proot-distro login ubuntu -- bash -c "
 apt update -y && apt upgrade -y
+
+# Cài đặt các phụ thuộc cần thiết để biên dịch Python
 apt install -y wget build-essential libssl-dev zlib1g-dev \
 libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev \
 libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev tk-dev
 
+# Tải và biên dịch Python 3.11.0
 cd /tmp
 wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
 tar -xf Python-3.11.0.tgz
@@ -31,6 +34,11 @@ cd Python-3.11.0
 make -j\$(nproc)
 make altinstall
 
-echo '✅ Python đã được cài:'
+# Kiểm tra phiên bản và cài pip
+echo '✅ Python 3.11.0 đã được cài:'
 python3.11 --version
+python3.11 -m ensurepip --upgrade
+python3.11 -m pip install --upgrade pip
+
+echo '✅ Cài xong tất cả thư viện!'
 "
