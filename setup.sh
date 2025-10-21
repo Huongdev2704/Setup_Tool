@@ -1,18 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+termux-setup-storage
 pkg update -y && pkg upgrade -y
-pkg install wget tar proot-distro -y
-proot-distro remove ubuntu 2>/dev/null || true
+pkg install git -y
+pkg install proot-distro -y
 
-mkdir -p ~/ubuntu-rootfs
-cd ~/ubuntu-rootfs
-wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-arm64-root.tar.xz
-tar -xJf noble-server-cloudimg-arm64-root.tar.xz -C ~/ubuntu-rootfs
-proot-distro import ubuntu-24.04 ~/ubuntu-rootfs
+git clone https://github.com/termux/proot-distro
+cd proot-distro
+./install.sh
 
-proot-distro login ubuntu-24.04 -- bash -c "
+proot-distro install ubuntu
+
+proot-distro login ubuntu -- bash -c "
 apt update -y
-apt install -y python3 python3-pip
-python3 --version
-echo '✅ Installed Ubuntu 24.04 LTS with Python 3.12.3!'
-"
+apt install python3 python3-pip -y
+echo '✅ Cài xong tất cả thư viện!'"
