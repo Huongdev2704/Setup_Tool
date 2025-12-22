@@ -13,5 +13,5 @@ proot-distro install ubuntu
 
 proot-distro login ubuntu -- bash -c "
 apt update -y
-apt install python3 python3-pip -y
+sudo apt install python3.11-venv
 echo '✅ Cài xong tất cả thư viện!'"
