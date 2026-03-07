@@ -1,18 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+clear
+echo "⚡ Đang cài môi trường..."
+
 termux-setup-storage
+
 pkg update -y && pkg upgrade -y
-pkg install android-tools
-pkg install git -y
-pkg install proot-distro -y
 
-git clone https://github.com/termux/proot-distro
-cd proot-distro
-./install.sh
+pkg install -y python android-tools git
 
-proot-distro install ubuntu
+pip install --upgrade pip
+pip install requests rich pure-python-adb
 
-proot-distro login ubuntu -- bash -c "
-apt update -y
-apt install python3 python3-pip -y
-echo '✅ Cài xong tất cả thư viện!'"
+echo "✅ Cài đặt hoàn tất!"
