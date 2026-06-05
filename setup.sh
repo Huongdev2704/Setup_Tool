@@ -3,10 +3,8 @@
 clear
 echo "⚡ Đang cài môi trường..."
 
-termux-setup-storage
-
 pkg update -y && pkg upgrade -y
-
+termux-setup-storage
 pkg install -y python android-tools git
 
 pip install --upgrade pip
