@@ -9,6 +9,6 @@ echo "📂 Cấp quyền bộ nhớ..."
 termux-setup-storage
 
 pip install --upgrade pip
-pip install requests rich ppadb pycryptodomex certifi
+pip install requests rich pure-python-adb pycryptodomex certifi
 
 echo "✅ Cài đặt hoàn tất!"
