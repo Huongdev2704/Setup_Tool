@@ -2,12 +2,13 @@
 
 clear
 echo "⚡ Đang cài môi trường..."
-
 pkg update -y && pkg upgrade -y
-termux-setup-storage
+
 pkg install -y python android-tools git
+echo "📂 Cấp quyền bộ nhớ..."
+termux-setup-storage
 
 pip install --upgrade pip
-pip install requests rich pure-python-adb
+pip install requests rich ppadb pycryptodomex certifi
 
 echo "✅ Cài đặt hoàn tất!"
